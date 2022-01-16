@@ -159,6 +159,11 @@ class RBTree
     void delete_val(T val)
     {
         Node<T>* z=search(this->root,val);
+        if(z==this->sentinel)
+        {
+            std::cout<<"The value "<<val<<" does not exist in this red-black tree"<<std::endl;
+            return;
+        }
         Node<T>* y=z;
         Color y_original_color=y->color;
         Node<T>* x;
