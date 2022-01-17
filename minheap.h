@@ -24,8 +24,8 @@ class MinHeap
     
     ~MinHeap()
     {
-        delete element_arr;
-        delete key_arr;
+        delete[] element_arr;
+        delete[] key_arr;
     }
 
     bool insert(U element, V key)
