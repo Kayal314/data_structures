@@ -38,6 +38,17 @@ class LinkedList
         this->foot=NULL;
         this->size=0;
     }
+    
+    ~LinkedList()
+    {
+        Node<T>* node=this->head;
+        while(node!=NULL)
+        {
+            Node<T>* to_del=node;
+            node=node->next;
+            delete to_del;
+        }
+    }
 
     int get_size()
     {
