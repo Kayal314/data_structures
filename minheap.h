@@ -21,6 +21,12 @@ class MinHeap
         capacity=max_elems;
         last_index=-1;
     }
+    
+    ~MinHeap()
+    {
+        delete element_arr;
+        delete key_arr;
+    }
 
     bool insert(U element, V key)
     {
