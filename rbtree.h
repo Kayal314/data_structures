@@ -28,6 +28,12 @@ struct Node
         this->parent=sentinel;
         this->color=color;
     }
+    ~Node()
+    {
+        delete left;
+        delete right;
+        delete parent;
+    }
 };
 
 template <typename T>
@@ -42,6 +48,13 @@ class RBTree
     {
         this->sentinel=new Node<T>();
         this->root=sentinel;
+    }
+
+    ~RBTree()
+    {
+        if(this->root!=this->sentinel)
+            release_mem(this->root);
+        delete this->sentinel;    
     }
 
     bool present(T val)
@@ -202,6 +215,14 @@ class RBTree
 
     
     private:
+    void release_mem(Node<T>* node)
+    {
+        if(node->left!=this->sentinel)
+            release_mem(node->left);
+        if(node->right!=this->sentinel)
+            release_mem(node->right);
+        delete node;
+    }
     void inorder(Node<T>* x)
     {
         if(x!=this->sentinel)
