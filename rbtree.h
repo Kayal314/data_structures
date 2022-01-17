@@ -28,12 +28,6 @@ struct Node
         this->parent=sentinel;
         this->color=color;
     }
-    ~Node()
-    {
-        delete left;
-        delete right;
-        delete parent;
-    }
 };
 
 template <typename T>
