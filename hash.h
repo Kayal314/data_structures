@@ -18,6 +18,9 @@ FORCE_INLINE WORD murmur_32_scramble(WORD key_chunk)
     return key_chunk;
 }
 
+/**
+ * MurmurHash3 was written by Austin Appleby in 2008 and is currently hosted on GitHub along with its test suite named 'SMHasher'
+ */
 WORD murmur3_32(const BYTE* key, size_t len, WORD seed)
 {
     WORD h = seed;
@@ -49,6 +52,14 @@ WORD murmur3_32(const BYTE* key, size_t len, WORD seed)
 	return h;
 }
 
+/**
+ * @brief Get the hash value of the string str
+ * 
+ * @param str : the key to be hashed
+ * @param hash_rand : a random value to be appended to the end of the string before hashing
+ * @param log2range : the log (base 2) of the maximum capacity of the hashset or hastable
+ * @return ** unsigned : a hash value between 0 and 2^log2range
+ */
 unsigned get_hash(const char* str, char hash_rand, unsigned log2range)
 {
     WORD seed = 0x9747b28c;
